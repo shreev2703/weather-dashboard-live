@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Weather Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Leaflet.js CSS and JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+  
+  <div class="container">
+    <h1>Live Weather Dashboard</h1>
+
+    <div class="top-bar">
+      <input type="text" id="cityInput" placeholder="Enter city..." />
+      <button onclick="getWeather()">Search</button>
+      <button id="voiceSearch" title="Say a city">🎤</button>
+
+
+      <select id="activitySelect">
+        <option value="walk">Walk</option>
+        <option value="dogwalk">Dog Walk</option>
+        <option value="run">Run</option>
+        <option value="hike">Hike</option>
+        <option value="bike">Bike</option>
+        <option value="swimming">Swimming</option>
+        <option value="picnic">Picnic</option>
+        <option value="sports">Outdoor Sports (Basketball, Soccer, etc)</option>
+        <option value="stargazing">Stargazing</option>
+        <option value="photography">Photography Walk</option>
+      </select>
+
+      <!-- New availability time inputs (using proper 24-hour clock) -->
+      <label for="availableStart" style="margin-left: 10px;">Available From:</label>
+      <input type="time" id="availableStart" value="06:00" />
+
+      <label for="availableEnd" style="margin-left: 10px;">To:</label>
+      <input type="time" id="availableEnd" value="22:00" />
+
+
+      <!--<button id="toggleDarkMode">Toggle Dark Mode</button> -->
+    </div>
+    
+    <div id="searchHistory" class="search-history"></div>
+
+    <div id="favoritesList" style="margin: 1rem 0;"></div>
+    
+    <div id="alertBox" class="alert-box" style="display: none;"></div>
+
+    
+    <div id="weatherInfo" class="fade-in">
+      <h2 id="cityName"></h2>
+      <p id="localTime"></p>
+      <p id="sunrise"></p>
+      <p id="sunset"></p>
+      <p id="currentTemp"></p>
+      <p id="humidity"></p>
+      <p id="windSpeed"></p>
+      <p id="aqi"></p>
+      <p id="activityAdvice"></p>
+      <img id="weatherIcon" src="" alt="" />
+    </div>
+    
+    <div id="favoritesDashboard" style="display: flex; gap: 16px; overflow-x: auto; padding: 10px 0;">
+      <!-- Favorite city weather cards will appear here -->
+    </div>
+    
+    <canvas id="forecastChart" width="400" height="200"></canvas>
+  </div>
+  <div id="map"></div>
+
+  <script src="script.js"></script>
+  <div id="weather-effects-container"></div>
+  <div id="weatherSafetyNote" style="font-size: 0.85rem; color: #666; margin-top: 2rem; padding: 10px; border-top: 1px solid #ccc; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <!-- Safety note will appear here -->
+  </div>
+</body>
+</html>
